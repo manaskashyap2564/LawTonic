@@ -1,0 +1,66 @@
+# General
+*.DS_Store
+.idea/
+.vscode/
+
+# Flutter
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+*.iml
+*.metadata
+flutter_error_reporter.log
+app_inspect_reports/
+
+# Android
+android/app/build/
+android/build/
+android/.gradle/
+android/gradle/wrapper/gradle-wrapper.jar
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# iOS
+ios/Pods/
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/ephemeral/
+ios/Flutter/app.flx
+ios/Flutter/flutter_assets/
+**/DerivedData/**
+**/build/**
+*.hmap
+*.ipa
+*.dSYM/
+
+# Web
+web/build/
+web/.dart_tool/
+
+# Linux
+linux/flutter/ephemeral/
+linux/flutter/generated_plugin_registrant.h
+linux/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugins.cmake
+
+# macOS
+macos/Flutter/ephemeral/
+macos/Flutter/GeneratedPluginRegistrant.h
+macos/Flutter/GeneratedPluginRegistrant.m
+macos/Flutter/generated_plugins.cmake
+macos/Pods/
+
+# Windows
+windows/flutter/ephemeral/
+windows/flutter/generated_plugin_registrant.h
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
