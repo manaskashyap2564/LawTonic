@@ -81,18 +81,22 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                children: [
-                  _buildGridCard(context, 'Civil Law', Icons.account_balance, '/civil_law'),
-                  _buildGridCard(context, 'Criminal Law', Icons.gavel, '/criminal_law'),
-                  _buildGridCard(context, 'Traffic Law', Icons.traffic, '/traffic_law'),
-                  _buildGridCard(context, 'Cyber Law', Icons.security, '/cyber_law'),
-                ],
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return GridView.count(
+                    crossAxisCount: constraints.maxWidth > 600 ? 4 : 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    children: [
+                      _buildGridCard(context, 'Civil Law', Icons.account_balance, '/civil_law'),
+                      _buildGridCard(context, 'Criminal Law', Icons.gavel, '/criminal_law'),
+                      _buildGridCard(context, 'Traffic Law', Icons.traffic, '/traffic_law'),
+                      _buildGridCard(context, 'Cyber Law', Icons.security, '/cyber_law'),
+                    ],
+                  );
+                },
               ),
               const SizedBox(height: 24),
               const Text(
