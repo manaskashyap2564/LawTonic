@@ -10,7 +10,9 @@ import 'package:law_tonic/pages/daily_news_page.dart';
 import 'package:law_tonic/pages/about_page.dart';
 import 'package:law_tonic/pages/contact_us_page.dart';
 import 'package:law_tonic/pages/login_signup_page.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:law_tonic/pages/community_page.dart';
+import 'package:law_tonic/services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +37,31 @@ class LawTonicApp extends StatelessWidget {
           secondary: Colors.purple[50],
         ),
       ),
-      home: const HomePage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''), // English, no country code
+        const Locale('hi', ''), // Hindi, no country code
+      ],
+      home: StreamBuilder(
+        stream: AuthService().user,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            if (snapshot.hasData) {
+              return const HomePage();
+            }
+            return const LoginSignupPage();
+          }
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
+      ),
       routes: {
         '/home': (context) => const HomePage(),
         '/civil_law': (context) => const CivilLawPage(),

@@ -1,0 +1,14 @@
+{
+  "helloWorld": "Hello World!",
+  "home": "Home",
+  "civilLaw": "Civil Law",
+  "criminalLaw": "Criminal Law",
+  "trafficLaw": "Traffic Law",
+  "cyberLaw": "Cyber Law",
+  "dailyNews": "Daily News",
+  "about": "About",
+  "contactUs": "Contact Us",
+  "login": "Login",
+  "community": "Community",
+  "bookmarks": "Bookmarks"
+}

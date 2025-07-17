@@ -30,7 +30,15 @@ class _LoginSignupPageState extends State<LoginSignupPage> {
             children: <Widget>[
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Email'),
-                validator: (val) => val!.isEmpty ? 'Enter an email' : null,
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return 'Enter an email';
+                  }
+                  if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(val)) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
                 onChanged: (val) {
                   setState(() => email = val);
                 },
