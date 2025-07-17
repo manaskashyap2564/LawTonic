@@ -1,0 +1,34 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+
+# Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+/ios/
+/android/
+/web/
+/windows/
+/linux/
+/macos/
+*.iml
+*.ipr
+*.iws
+.idea/
+*~
+app.dill
+app.snapshot
+vmservice.snapshot
+vmservice_snapshot.d
+gen_l10n.dart
