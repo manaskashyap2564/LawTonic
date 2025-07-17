@@ -39,7 +39,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                     final bookmark = bookmarks[index];
                     if (bookmark.startsWith('law_')) {
                       return FutureBuilder<Law>(
-                        future: _db.getLaws().map((laws) => laws.firstWhere((law) => law.id == bookmark.substring(4))),
+                        future: _db.getLaws().first.then((laws) => laws.firstWhere((law) => law.id == bookmark.substring(4))),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return const SizedBox.shrink();
@@ -53,7 +53,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
                       );
                     } else if (bookmark.startsWith('news_')) {
                       return FutureBuilder<News>(
-                        future: _db.getNews().map((news) => news.firstWhere((n) => n.id == bookmark.substring(5))),
+                        future: _db.getNews().first.then((news) => news.firstWhere((n) => n.id == bookmark.substring(5))),
                         builder: (context, snapshot) {
                           if (!snapshot.hasData) {
                             return const SizedBox.shrink();

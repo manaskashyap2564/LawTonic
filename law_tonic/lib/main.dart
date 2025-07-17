@@ -12,6 +12,7 @@ import 'package:law_tonic/pages/contact_us_page.dart';
 import 'package:law_tonic/pages/login_signup_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:law_tonic/pages/community_page.dart';
+import 'package:law_tonic/pages/bookmarks_page.dart';
 import 'package:law_tonic/services/auth_service.dart';
 
 void main() async {
@@ -37,14 +38,14 @@ class LawTonicApp extends StatelessWidget {
           secondary: Colors.purple[50],
         ),
       ),
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
-        const Locale('en', ''), // English, no country code
-        const Locale('hi', ''), // Hindi, no country code
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('hi', ''), // Hindi, no country code
       ],
       home: StreamBuilder(
         stream: AuthService().user,
@@ -73,7 +74,7 @@ class LawTonicApp extends StatelessWidget {
         '/contact_us': (context) => const ContactUsPage(),
         '/login_signup': (context) => const LoginSignupPage(),
         '/community': (context) => const CommunityPage(),
-        '/bookmarks': (context) => const BookmarksPage(),
+        '/bookmarks': (context) => BookmarksPage(),
       },
     );
   }
