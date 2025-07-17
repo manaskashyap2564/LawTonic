@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:law_tonic/firebase_options.dart';
 import 'package:law_tonic/pages/home_page.dart';
 import 'package:law_tonic/pages/civil_law_page.dart';
 import 'package:law_tonic/pages/criminal_law_page.dart';
@@ -10,7 +12,11 @@ import 'package:law_tonic/pages/contact_us_page.dart';
 import 'package:law_tonic/pages/login_signup_page.dart';
 import 'package:law_tonic/pages/community_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: await DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const LawTonicApp());
 }
 
@@ -41,6 +47,7 @@ class LawTonicApp extends StatelessWidget {
         '/contact_us': (context) => const ContactUsPage(),
         '/login_signup': (context) => const LoginSignupPage(),
         '/community': (context) => const CommunityPage(),
+        '/bookmarks': (context) => const BookmarksPage(),
       },
     );
   }
