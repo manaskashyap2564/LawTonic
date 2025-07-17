@@ -1,19 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:law_tonic/models/news_model.dart';
+import 'package:law_tonic/services/auth_service.dart';
+import 'package:law_tonic/services/database_service.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final AuthService auth = AuthService();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Indian Laws Explained'),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/login_signup');
+          StreamBuilder(
+            stream: auth.user,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return IconButton(
+                  icon: const Icon(Icons.logout),
+                  onPressed: () async {
+                    await auth.signOut();
+                  },
+                );
+              } else {
+                return TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login_signup');
+                  },
+                  child: const Text('Login/Sign Up'),
+                );
+              }
             },
-            child: const Text('Login/Sign Up'),
           ),
         ],
       ),
@@ -44,7 +62,7 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.bookmark),
               title: const Text('Bookmarks'),
               onTap: () {
-                // Add bookmark navigation logic here
+                Navigator.pushNamed(context, '/bookmarks');
               },
             ),
             ListTile(
@@ -82,17 +100,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
-              SizedBox(
-                height: 150,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    _buildNewsCarouselItem(context, 'News 1', 'Snippet 1'),
-                    _buildNewsCarouselItem(context, 'News 2', 'Snippet 2'),
-                    _buildNewsCarouselItem(context, 'News 3', 'Snippet 3'),
-                  ],
-                ),
-              ),
+              _buildDailyNewsCarousel(),
               const SizedBox(height: 24),
               Center(
                 child: ElevatedButton(
@@ -160,6 +168,33 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildDailyNewsCarousel() {
+    final DatabaseService db = DatabaseService();
+    return SizedBox(
+      height: 150,
+      child: StreamBuilder<List<News>>(
+        stream: db.getNews(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(child: Text('Something went wrong.'));
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final news = snapshot.data!;
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: news.length,
+            itemBuilder: (context, index) {
+              final item = news[index];
+              return _buildNewsCarouselItem(context, item.title, item.summary);
+            },
+          );
+        },
       ),
     );
   }
