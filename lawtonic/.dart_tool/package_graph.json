@@ -1,10 +1,10 @@
 {
   "roots": [
-    "law_tonic"
+    "lawtonic"
   ],
   "packages": [
     {
-      "name": "law_tonic",
+      "name": "lawtonic",
       "version": "1.0.0+1",
       "dependencies": [
         "cloud_firestore",

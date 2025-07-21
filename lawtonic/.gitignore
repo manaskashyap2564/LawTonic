@@ -32,3 +32,7 @@ app.snapshot
 vmservice.snapshot
 vmservice_snapshot.d
 gen_l10n.dart
+
+
+# .gitignore
+.env

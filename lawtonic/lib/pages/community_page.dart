@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:law_tonic/models/community_post_model.dart';
-import 'package:law_tonic/services/database_service.dart';
+import 'package:lawtonic/models/community_post_model.dart';
+import 'package:lawtonic/services/database_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class CommunityPage extends StatefulWidget {

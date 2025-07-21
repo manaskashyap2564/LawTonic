@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:law_tonic/models/law_model.dart';
-import 'package:law_tonic/models/news_model.dart';
-import 'package:law_tonic/models/user_model.dart';
-import 'package:law_tonic/models/community_post_model.dart';
+import 'package:lawtonic/models/law_model.dart';
+import 'package:lawtonic/models/news_model.dart';
+import 'package:lawtonic/models/user_model.dart';
+import 'package:lawtonic/models/community_post_model.dart';
 
 class DatabaseService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;

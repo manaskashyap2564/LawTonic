@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:law_tonic/services/auth_service.dart';
+import 'package:lawtonic/services/auth_service.dart';
 
 class LoginSignupPage extends StatefulWidget {
   const LoginSignupPage({super.key});

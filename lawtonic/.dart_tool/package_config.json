@@ -446,7 +446,7 @@
       "languageVersion": "3.4"
     },
     {
-      "name": "law_tonic",
+      "name": "lawtonic",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
